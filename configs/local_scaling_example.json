@@ -1,0 +1,61 @@
+{
+  "experiment_name": "local-scaling-pilot",
+  "output_dir": "artifacts/local_scaling",
+  "compute_budget_flops": 1e16,
+  "model": {
+    "target_params": 50000000,
+    "d_model": 512,
+    "num_layers": 8,
+    "num_heads": 8,
+    "d_ff": 2048,
+    "vocab_size": 50304,
+    "context_length": 1024,
+    "mup_enabled": true,
+    "notes": "Fill in a real parameterization rule."
+  },
+  "data": {
+    "train_tokens": 33333333,
+    "val_tokens": 1000000,
+    "train_path": "TODO/train.bin",
+    "val_path": "TODO/val.bin",
+    "tokenizer_path": "TODO/tokenizer.json",
+    "micro_batch_size": 8,
+    "num_workers": 2
+  },
+  "training": {
+    "seed": 1337,
+    "max_steps": 1000,
+    "batch_size": 128,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.1,
+    "grad_clip_norm": 1.0,
+    "optimizer_name": "adamw",
+    "scheduler_name": "wsd",
+    "warmup_fraction": 0.05,
+    "stable_fraction": 0.85,
+    "decay_fraction": 0.1,
+    "log_every_steps": 10,
+    "eval_every_steps": 100,
+    "save_every_steps": 0,
+    "precision": "fp32",
+    "device_preference": "auto",
+    "compile_model": false
+  },
+  "wandb": {
+    "enabled": false,
+    "project": "cs336-scaling-local",
+    "group": "pilot",
+    "job_type": "train",
+    "run_name": "pilot-a1",
+    "mode": "online",
+    "tags": [
+      "local",
+      "pilot"
+    ]
+  },
+  "metadata": {
+    "stage": "pilot_lr",
+    "notes": "Edit this config per run or use W&B sweeps."
+  }
+}

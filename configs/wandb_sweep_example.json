@@ -1,0 +1,28 @@
+{
+  "method": "grid",
+  "name": "local-scaling-lr-sweep",
+  "metric": {
+    "name": "final_loss",
+    "goal": "minimize"
+  },
+  "parameters": {
+    "training.learning_rate": {
+      "values": [
+        5e-05,
+        0.0001,
+        0.0003,
+        0.0006,
+        0.001
+      ]
+    },
+    "wandb.run_name": {
+      "values": [
+        "lr-5e-5",
+        "lr-1e-4",
+        "lr-3e-4",
+        "lr-6e-4",
+        "lr-1e-3"
+      ]
+    }
+  }
+}
